@@ -10,14 +10,14 @@ export const manifest: ManifestPrinciple[] = [
 		headline: { bold: 'Mental health', rest: 'first' },
 		points: [
 			'Control the acceleration, do not endure it.',
-			'Watch out of context switching, job intensification, AI burnout.'
+			'Watch out for context switching, job intensification, AI burnout.'
 		]
 	},
 	{
 		number: 2,
 		headline: { bold: 'AI is only', rest: 'a tool' },
 		points: [
-			"Don't loose ourselves.",
+			"Don't lose ourselves.",
 			'Be aware of fascination and hype.',
 		]
 	},
@@ -26,23 +26,23 @@ export const manifest: ManifestPrinciple[] = [
 		headline: { bold: 'Play', rest: 'collective' },
 		points: [
 			'Talk together, design together, code together.', 
-			'Sharing is caring, communication is key.', 
+			'Help your colleague who feels left behind.', 
 		]
 	},
 	{
 		number: 4,
-		headline: { bold: "Don't", rest: 'get lazy' },
+		headline: { bold: 'Keep it', rest: 'open' },
 		points: [
-			'Keep your expertise sharp.',
-			'Keep a critical point of view.',
-		]
+			'“Open over Claude” ethics',
+			'Project setup must work for everyone.']
 	},
 	{
 		number: 5,
-		headline: { bold: 'Keep it', rest: 'open' },
+		headline: { bold: "Don't", rest: 'get lazy' },
 		points: [
-			'“Open over Claude” Ethics',
-			'Project setup must work for everyone.']
+			'Keep your expertise sharp.',
+			'Keep your critical point of view.',
+		]
 	},
 	{
 		number: 6,
