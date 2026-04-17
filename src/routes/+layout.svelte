@@ -53,7 +53,7 @@
 		--size-number: clamp(1rem, 1.2vw, 1.25rem);
 		--size-body: clamp(1rem, 1.2vw, 1.25rem);
 		--size-headline: clamp(1.75rem, 3.5vw, 3rem);
-		--size-hero: clamp(2.5rem, 5vw, 4.5rem);
+		--size-hero: clamp(3rem, 6vw, 6rem);
 		--size-sub: clamp(1rem, 1.2vw, 1.25rem);
 		--size-sm: clamp(0.875rem, 1.2vw, 1rem);
 

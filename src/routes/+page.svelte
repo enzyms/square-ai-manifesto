@@ -32,7 +32,7 @@
 
 <footer>
 	<div class="footer-content">
-		<p class="footer-text">Liip — Square Team — {new Date().getFullYear()}</p>
+		<p class="footer-text">Liip — Square Team — AI Manifest v1.0 — {new Date().getFullYear()}</p>
 	</div>
 </footer>
 
@@ -82,8 +82,8 @@
 
 	.hero-accent {
 		display: block;
-		width: 2rem;
-		height: 4px;
+		width: 4rem;
+		height: 6px;
 		background: var(--highlight-color);
 		margin-top: var(--space-md);
 	}
