@@ -40,7 +40,7 @@
 
 <footer>
 	<div class="footer-content">
-		<p class="footer-text">Liip — Square Team — AI Manifest v1.1 — {new Date().getFullYear()}</p>
+		<p class="footer-text">Liip — Square Team — AI Manifest v1.2 — {new Date().getFullYear()}</p>
 	</div>
 </footer>
 
@@ -130,6 +130,12 @@
 		padding-left: calc(5rem + var(--space-md));
 		font-size: var(--size-body);
 		line-height: 1.75;
+	}
+
+	@media (max-width: 640px) {
+		.manifest-footnote {
+			padding-left: calc(3rem + var(--space-sm));
+		}
 	}
 
 	.footnote-button {

@@ -8,6 +8,7 @@
 	let items = $state<string[]>([]);
 	let dragIdx = $state<number | null>(null);
 	let overIdx = $state<number | null>(null);
+	let listEl: HTMLUListElement | undefined = $state();
 
 	$effect(() => {
 		if (open) {
@@ -21,6 +22,16 @@
 		return `${p.headline.bold} ${p.headline.rest}`;
 	}
 
+	function moveItem(fromIdx: number, toIdx: number) {
+		if (fromIdx === toIdx) return;
+		const reordered = [...items];
+		const [moved] = reordered.splice(fromIdx, 1);
+		reordered.splice(toIdx, 0, moved);
+		items = reordered;
+		dragIdx = toIdx;
+	}
+
+	// --- Desktop drag & drop ---
 	function handleDragStart(idx: number) {
 		dragIdx = idx;
 	}
@@ -29,14 +40,42 @@
 		e.preventDefault();
 		if (dragIdx === null || dragIdx === idx) return;
 		overIdx = idx;
-		const reordered = [...items];
-		const [moved] = reordered.splice(dragIdx, 1);
-		reordered.splice(idx, 0, moved);
-		items = reordered;
-		dragIdx = idx;
+		moveItem(dragIdx, idx);
 	}
 
 	function handleDragEnd() {
+		dragIdx = null;
+		overIdx = null;
+	}
+
+	// --- Touch drag & drop ---
+	function getItemIndexAtY(y: number): number | null {
+		if (!listEl) return null;
+		const children = Array.from(listEl.children) as HTMLElement[];
+		for (let i = 0; i < children.length; i++) {
+			const rect = children[i].getBoundingClientRect();
+			if (y >= rect.top && y <= rect.bottom) return i;
+		}
+		return null;
+	}
+
+	function handleTouchStart(e: TouchEvent, idx: number) {
+		dragIdx = idx;
+		overIdx = null;
+	}
+
+	function handleTouchMove(e: TouchEvent) {
+		if (dragIdx === null) return;
+		e.preventDefault();
+		const touch = e.touches[0];
+		const targetIdx = getItemIndexAtY(touch.clientY);
+		if (targetIdx !== null && targetIdx !== dragIdx) {
+			overIdx = targetIdx;
+			moveItem(dragIdx, targetIdx);
+		}
+	}
+
+	function handleTouchEnd() {
 		dragIdx = null;
 		overIdx = null;
 	}
@@ -81,7 +120,7 @@
 				</button>
 			</div>
 
-			<ul class="sortable-list">
+			<ul class="sortable-list" bind:this={listEl}>
 				{#each items as id, idx (id)}
 					<li
 						class="sortable-item"
@@ -91,6 +130,9 @@
 						ondragstart={() => handleDragStart(idx)}
 						ondragover={(e) => handleDragOver(e, idx)}
 						ondragend={handleDragEnd}
+						ontouchstart={(e) => handleTouchStart(e, idx)}
+						ontouchmove={handleTouchMove}
+						ontouchend={handleTouchEnd}
 						role="listitem"
 					>
 						<span class="drag-handle" aria-hidden="true">
@@ -177,6 +219,7 @@
 		padding: 0.625rem var(--space-md);
 		border-top: 1px solid transparent;
 		cursor: grab;
+		touch-action: none;
 		transition: background-color 0.15s var(--ease);
 		user-select: none;
 	}
