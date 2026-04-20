@@ -54,14 +54,22 @@ export const manifest: ManifestPrinciple[] = [
 	},
 	{
 		number: 7,
-		headline: { bold: 'Security, ', rest: 'sovereignty' },
+		headline: { bold: 'Sovereignty', rest: 'at the centre' },
 		points: [
-			'Give access to the necessary systems only.',
-			'Share data responsibly.'
+			'Own your data.',
+			'Expose them responsibly.',
 		]
 	},
 	{
 		number: 8,
+		headline: { bold: 'Security', rest: 'all around' },
+		points: [
+			'Give access to the necessary systems only.',
+			'Treat every prompt as a potential leak.'
+		]
+	},
+	{
+		number: 9,
 		headline: { bold: 'Be', rest: 'frugal' },
 		points: [
 			'Master your context, choose your LLM wisely.',

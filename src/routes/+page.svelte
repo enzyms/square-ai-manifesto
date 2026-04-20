@@ -18,6 +18,7 @@
 				<span class="hero-bold">AI</span> Manifest
 			</h1>
 			<span class="hero-accent"></span>
+			<p class="hero-lead">These are our shared principles for integrating AI in the Square Team. It's about intention, responsibility and a healthy dose of critical thinking.</p>
 		</div>
 	</section>
 
@@ -86,6 +87,22 @@
 		height: 6px;
 		background: var(--highlight-color);
 		margin-top: var(--space-md);
+	}
+
+	.hero-lead {
+		max-width: 62rem;
+		font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+		font-weight: var(--weight-thin);
+		line-height: 1.3;
+		color: var(--text-color);
+		margin-top: var(--space-lg);
+		padding-left: calc(5rem + var(--space-md));
+	}
+
+	@media (max-width: 640px) {
+		.hero-lead {
+			padding-left: calc(3rem + var(--space-sm));
+		}
 	}
 
 	/* ---- Manifest list ---- */
